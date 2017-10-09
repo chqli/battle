@@ -10,10 +10,14 @@ public class Wall {
   }
 
   public boolean attemptAttack(int attackStrength) {
-    return attackStrength >= strength;
+    boolean succeeded = attackStrength > strength;
+    if (succeeded) {
+      raise(attackStrength);
+    }
+    return succeeded;
   }
 
-  public void raise(int s) {
+  private void raise(int s) {
     if (s > strength) {
       strength = s;
     }

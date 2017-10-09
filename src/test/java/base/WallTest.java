@@ -16,14 +16,14 @@ public class WallTest {
   @Test
   public void attackWithHigherStrength() {
     Wall wall = new Wall(Direction.E, 5);
-    assertThat(wall.attemptAttack(5), is(true));
+    assertThat(wall.attemptAttack(6), is(true));
   }
 
   @Test
-  public void raiseWall() {
+  public void shouldRaiseWallAfterAttackIfItSucceeded() {
     Wall wall = new Wall(Direction.E, 5);
-    assertThat(wall.attemptAttack(5), is(true));
-    wall.raise(6);
-    assertThat(wall.attemptAttack((5)), is(false));
+    assertThat(wall.attemptAttack(6), is(true));
+    assertThat(wall.attemptAttack((6)), is(false));
+    assertThat(wall.attemptAttack((7)), is(true));
   }
 }
